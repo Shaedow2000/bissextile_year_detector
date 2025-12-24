@@ -24,6 +24,12 @@ class Methods:
 
         return
 
+def is_bissextile( annee: int ) -> bool:
+    if ( annee % 4 == 0 and annee % 100 != 0 ) or annee % 400 == 0:
+        return True
+    else:
+        return False
+
 methods: Methods = Methods()
 
 def main() -> None:
@@ -39,6 +45,11 @@ def main() -> None:
         elif choice == 'a':
             try:
                 annee: int = int( input( '>-> Annee: ' ).replace( ' ', '' ) )
+
+                if is_bissextile( annee ):
+                    print( f'|=> { annee } est une annee bissextile.' )
+                else:
+                    print( f'|=> { annee } n\'est pas une annee bissextile.' )
             except ValueError:
                 methods.value_error()
         else:
